@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/schweigerjonas/donation-hapi/issues"
   },
-  "homepage": "https://github.com/schweigerjonas/donation-hapi#readme"
+  "homepage": "https://github.com/schweigerjonas/donation-hapi#readme",
+  "devDependencies": {
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "nodemon": "^3.1.11",
+    "prettier": "^3.6.2"
+  }
 }
