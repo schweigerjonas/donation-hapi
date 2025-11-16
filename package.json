@@ -1,0 +1,20 @@
+{
+  "name": "donation-hapi",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/schweigerjonas/donation-hapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/schweigerjonas/donation-hapi/issues"
+  },
+  "homepage": "https://github.com/schweigerjonas/donation-hapi#readme"
+}
