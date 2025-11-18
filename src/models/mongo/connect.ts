@@ -1,10 +1,12 @@
 import * as dotenv from "dotenv";
 import Mongoose from "mongoose";
+// @ts-ignore
 import * as mongooseSeeder from "mais-mongoose-seeder";
 import { userStore } from "./user-store.js";
 import { candidateStore } from "./candidate-store.js";
 import { donationStore } from "./donation-store.js";
 import { seedData } from "./seed-data.js";
+import { Db } from "../../types/store-types.js";
 
 const seedLib = mongooseSeeder.default;
 
@@ -14,11 +16,11 @@ async function seed() {
   console.log(dbData);
 }
 
-export function connectMongo(db) {
+export function connectMongo(db: Db) {
   dotenv.config();
 
   Mongoose.set("strictQuery", true);
-  Mongoose.connect(process.env.DB);
+  Mongoose.connect(process.env.DB as string);
   const mongoDb = Mongoose.connection;
 
   db.userStore = userStore;
