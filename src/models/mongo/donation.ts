@@ -1,8 +1,9 @@
 import Mongoose from "mongoose";
+import { Donation } from "../../types/donation-types";
 
 const { Schema } = Mongoose;
 
-const donationSchema = new Schema({
+const donationSchema = new Schema<Donation>({
   amount: Number,
   method: String,
   donor: String,

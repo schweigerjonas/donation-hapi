@@ -19,5 +19,5 @@ export interface Donation {
   candidate: Candidate | string;
   donor: User | string;
   lat: number;
-  lon: number;
+  lng: number;
 }
