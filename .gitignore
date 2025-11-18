@@ -1,3 +1,6 @@
+# TypeScript/Build Output
+"dist/"
+
 # IDE
 .idea
 .vscode
