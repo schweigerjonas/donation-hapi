@@ -1,3 +1,4 @@
+import { Donation } from "../../types/donation-types.js";
 import { DonationMongoose } from "./donation.js";
 
 export const donationStore = {
@@ -6,12 +7,12 @@ export const donationStore = {
     return donations;
   },
 
-  async findBy(id) {
+  async findBy(id: string) {
     const donations = await DonationMongoose.find({ candidate: id });
     return donations;
   },
 
-  async add(donation) {
+  async add(donation: Donation) {
     const newDonation = new DonationMongoose({ ...donation });
     await newDonation.save();
     const retDonation = await DonationMongoose.findOne({ _id: newDonation._id }).populate("candidate").lean();
