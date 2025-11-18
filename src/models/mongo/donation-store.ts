@@ -12,10 +12,10 @@ export const donationStore = {
   },
 
   async add(donation) {
-    let newDonation = new DonationMongoose({ ...donation });
+    const newDonation = new DonationMongoose({ ...donation });
     await newDonation.save();
-    newDonation = await DonationMongoose.findOne({ _id: newDonation._id }).populate("candidate").lean();
-    return newDonation;
+    const retDonation = await DonationMongoose.findOne({ _id: newDonation._id }).populate("candidate").lean();
+    return retDonation;
   },
 
   async delete() {
