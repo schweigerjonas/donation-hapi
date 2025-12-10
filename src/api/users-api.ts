@@ -37,7 +37,9 @@ export const userApi = {
   },
 
   create: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request: Request, h: ResponseToolkit) {
       try {
         console.log("HERE");
