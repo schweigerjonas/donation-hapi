@@ -3,6 +3,7 @@ import Inert from "@hapi/inert";
 import Vision from "@hapi/vision";
 import Cookie from "@hapi/cookie";
 import Handlebars from "handlebars";
+import * as jwt from "hapi-auth-jwt2";
 
 import dotenv from "dotenv";
 import path from "path";
@@ -10,6 +11,8 @@ import { fileURLToPath } from "url";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { webRoutes } from "./web-routes.js";
 import { connectDb } from "./models/db.js";
+import { validate } from "./api/jwt-utils.js";
+import { apiRoutes } from "./api-routes.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -26,6 +29,7 @@ async function initPlugins(server: Server) {
   await server.register(Inert);
   await server.register(Vision);
   await server.register(Cookie);
+  await server.register(jwt);
 
   server.views({
     engines: {
@@ -50,6 +54,12 @@ function initSecurityStrategies(server: Server) {
     redirectTo: "/",
     validate: accountsController.validate,
   });
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.COOKIE_PASSWORD,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS265"] },
+  });
+
   server.auth.default("session");
 }
 
@@ -63,6 +73,7 @@ async function init() {
   initSecurityStrategies(server);
   connectDb("mongo");
   server.route(webRoutes);
+  server.route(apiRoutes);
   await server.start();
   console.log(`Server running at: ${server.info.uri}`);
 }
