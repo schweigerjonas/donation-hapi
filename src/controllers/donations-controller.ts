@@ -6,7 +6,11 @@ export const donationsController = {
     handler: async function (request: Request, h: ResponseToolkit) {
       const loggedInUser = request.auth.credentials;
       const candidates = await db.candidateStore.find();
-      return h.view("donate", { title: "Make a Donation", user: loggedInUser, candidates: candidates });
+      return h.view("donate", {
+        title: "Make a Donation",
+        user: loggedInUser,
+        candidates: candidates,
+      });
     },
   },
   donate: {
