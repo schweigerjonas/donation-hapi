@@ -57,7 +57,7 @@ function initSecurityStrategies(server: Server) {
   server.auth.strategy("jwt", "jwt", {
     key: process.env.COOKIE_PASSWORD,
     validate: validate,
-    verifyOptions: { algorithms: ["HS265"] },
+    verifyOptions: { algorithms: ["HS256"] },
   });
 
   server.auth.default("session");
